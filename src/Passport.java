@@ -1,73 +1,69 @@
+import java.time.LocalDate;
 import java.util.Objects;
+import java.util.Set;
 
 public class Passport {
-
-    private int passportID;
-    private String surname;
+    private Set<String> passportNumbers;
+    private String surName;
     private String name;
-    private String middleName;
+    private String lastName;
     private String dateOfBirth;
 
-    public Passport(int passportID, String surname, String name, String middleName, String dateOfBirth) {
-        if (passportID <= 0) {
-            this.passportID = passportID;
-        }
-        if (surname != null && !surname.isEmpty() && !surname.isBlank()) {
-                this.surname = surname;
-        }
-        if (name != null && !name.isEmpty() && !name.isBlank()) {
-            this.name = name;
-        }
-        if (dateOfBirth != null && !dateOfBirth.isEmpty() && !dateOfBirth.isBlank()) {
-            this.dateOfBirth = dateOfBirth;
-        }
-        this.middleName = middleName;
+    public Passport(Set<String> passportNumbers, String surName, String name, String lastName, String dateOfBirth) {
+        this.passportNumbers = passportNumbers;
+        this.surName = surName;
+        this.name = name;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        if (name == null || name.isEmpty() || name.isBlank())
+            throw new IllegalArgumentException("Некорректно заполнено Имя");
+        if (surName == null || surName.isEmpty() || surName.isBlank())
+            throw new IllegalArgumentException("Некорректно заполнена Фамилия");
+        if (dateOfBirth == null || dateOfBirth.isEmpty() || dateOfBirth.isBlank())
+            throw new IllegalArgumentException("Некорректно заполнена Дата рождения");
+
+
     }
 
-    @Override
-    public String toString() {
-        return "Паспорт №: " + passportID + ", Фамилия: " + surname + ", Имя: " + name +
-                ", Отчетство" + middleName + ", Дата рождения: " + dateOfBirth;
+    public Set<String> getPassportNumbers() {
+        return passportNumbers;
     }
 
-    public int getPassportID() {
-        return passportID;
-    }
-
-    public void setPassportID(int passportID) {
-        this.passportID = passportID;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public String getSurName() {
+        return surName;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getMiddleName() {
-        return middleName;
-    }
-
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
+    public String getLastName() {
+        return lastName;
     }
 
     public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public boolean isSetNumber(String s) {
+        return passportNumbers.contains(s);
+    }
+
+    public String print(String s) {
+        for (String passport1:passportNumbers) {
+            return passport1;
+        }
+        return null;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Номер паспорта: " + passportNumbers +
+                " Фамилия: " + surName +
+                " Имя: " + name +
+                " Отчество: " + lastName +
+                " Дата рождения: " + dateOfBirth;
     }
 
     @Override
@@ -75,11 +71,12 @@ public class Passport {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Passport passport = (Passport) o;
-        return passportID == passport.passportID && Objects.equals(surname, passport.surname) && Objects.equals(name, passport.name) && Objects.equals(middleName, passport.middleName) && Objects.equals(dateOfBirth, passport.dateOfBirth);
+        return passportNumbers == passport.passportNumbers;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(passportID, surname, name, middleName, dateOfBirth);
+        return Objects.hash(passportNumbers);
     }
+
 }
