@@ -24,11 +24,11 @@ public class Main {
         productService.add(bananas);
         productService.add(lemon);
 
-        System.out.println(productService);
-
-        System.out.println("Список продуктов: " + productService.getProducts());
-        productService.delete(potato);
-        System.out.println("Список продуктов: " + productService.getProducts());
+//        System.out.println(productService);
+//
+//        System.out.println("Список продуктов: " + productService.getProducts());
+//        productService.delete(potato);
+//        System.out.println("Список продуктов: " + productService.getProducts());
 
 
         Set<String> product = new HashSet<>();
@@ -42,102 +42,102 @@ public class Main {
         product.add(bananas.getName());
         product.add(lemon.getName());
 
-        System.out.println(Arrays.toString(product.toArray()));
+//        System.out.println(Arrays.toString(product.toArray()));
 
+        System.out.println("ДЗ 1, 2");
+        Recipes salad = new Recipes("Салат");
+        salad.addProduct(potato, 3);
+        salad.addProduct(carrot, 2);
+        salad.addProduct(onion, 1);
 
-        Recipes garnish = new Recipes("Салат");
-        garnish.addProduct(potato, 3);
-        garnish.addProduct(carrot, 2);
-        garnish.addProduct(onion, 1);
-
-        System.out.println("Стоимость продуктов " + garnish +
-                " cоставляет " + garnish.makeRecipePrice() + " рублей.");
-
-        Recipes salad = new Recipes("Компот");
-        salad.addProduct(oranges, 2);
-        salad.addProduct(apples, 2);
-        salad.addProduct(lemon, 1);
-
-        System.out.println("Стоимость продуктов " + salad +
+        System.out.println("Стоимость продуктов на " + salad +
                 " cоставляет " + salad.makeRecipePrice() + " рублей.");
 
+        Recipes compote = new Recipes("Компот");
+        compote.addProduct(oranges, 2);
+        compote.addProduct(apples, 2);
+        compote.addProduct(lemon, 1);
 
-        System.out.println("ДЗ 2, Задание 2");
-        ArrayList<Integer> nums = new ArrayList<>();
-        decide(nums);
-
-        System.out.println("Таблицы умножения");
-        List<Pair> allPairs = new ArrayList<>();
-        for (int first = 2; first <= 9; first++)
-        {
-            for (int second = first; second <= 9; second++)
-            {
-                allPairs.add(new Pair(first, second));
-            }
-        }
-        Collections.shuffle(allPairs);
-        List<Pair> chosenPairs = allPairs.subList(0, 15);
-        System.out.println(chosenPairs);
-
-        System.out.println("Паспорт");
-
-        Passport ivan = new Passport(
-                Collections.singleton("112233"),
-                "Иванов",
-                "Иван",
-                "Иванович", "11.10.2000");
-        Passport sergei = new Passport(
-                Collections.singleton("112244"),
-                "Петров",
-                "Петр",
-                "Петрович",
-                "12.10.2000");
-        Passport andrei = new Passport(
-                Collections.singleton("112255"),
-                "Алексеев",
-                "Алексей",
-                "Алексеевич",
-                "13.10.2000");
-
-        Set<Passport> passportSets = new HashSet<>();
-        passportSets.add(ivan);
-        passportSets.add(sergei);
-        passportSets.add(andrei);
-
-        Iterator itr = passportSets.iterator();
-        while (itr.hasNext()) {
-            System.out.println(itr.next());
-        }
-
-        System.out.println("Паспорт: " + find(passportSets, "112255"));
+        System.out.println("Стоимость продуктов на " + compote +
+                " cоставляет " + compote.makeRecipePrice() + " рублей.");
 
 
+//        System.out.println("ДЗ 2, Задание 2");
+//        ArrayList<Integer> nums = new ArrayList<>();
+//        decide(nums);
+//
+//        System.out.println("Таблицы умножения");
+//        List<Pair> allPairs = new ArrayList<>();
+//        for (int first = 2; first <= 9; first++)
+//        {
+//            for (int second = first; second <= 9; second++)
+//            {
+//                allPairs.add(new Pair(first, second));
+//            }
+//        }
+//        Collections.shuffle(allPairs);
+//        List<Pair> chosenPairs = allPairs.subList(0, 15);
+//        System.out.println(chosenPairs);
+//
+//        System.out.println("Паспорт");
+//
+//        Passport ivan = new Passport(
+//                Collections.singleton("112233"),
+//                "Иванов",
+//                "Иван",
+//                "Иванович", "11.10.2000");
+//        Passport petr = new Passport(
+//                Collections.singleton("112244"),
+//                "Петров",
+//                "Петр",
+//                "Петрович",
+//                "12.10.2000");
+//        Passport alex = new Passport(
+//                Collections.singleton("112255"),
+//                "Алексеев",
+//                "Алексей",
+//                "Алексеевич",
+//                "13.10.2000");
+//
+//        Set<Passport> passportSets = new HashSet<>();
+//        passportSets.add(ivan);
+//        passportSets.add(petr);
+//        passportSets.add(alex);
+//
+//        Iterator itr = passportSets.iterator();
+//        while (itr.hasNext()) {
+//            System.out.println(itr.next());
+//        }
+//
+//        System.out.println("Паспорт: " + find(passportSets, "112255"));
 
 
 
-    }
 
-    public static void decide (ArrayList<Integer> list){
-        int sum = 20;
-        for(int i = 0;i<sum;i++) {
-            list.add((int)(Math.random()*1000));
-        }
-        System.out.println(list.toString());
-        for(int i = 0;i<list.size();i++) {
-            if(list.get(i) % 2 != 0)list.remove(i);
-        }
-        System.out.println(list);
 
     }
 
-    public static Passport find(Set<Passport> passportSets, String number) {
-        for (Passport passports: passportSets) {
-            if (passports.isSetNumber(number)) {
-                return passports;
-            }
-        }
-        return null;
-    }
+//    public static void decide (ArrayList<Integer> list){
+//        int sum = 20;
+//        for(int i = 0;i<sum;i++) {
+//            list.add((int)(Math.random()*1000));
+//        }
+//        System.out.println(list.toString());
+//        for(int i = 0;i<list.size();i++) {
+//            if(list.get(i) % 2 != 0)list.remove(i);
+//        }
+//        System.out.println(list);
+//
+//    }
+//
+//    public static Passport find(Set<Passport> passportSets, String number) {
+//        for (Passport passports: passportSets) {
+//            if (passports.isSetNumber(number)) {
+//                return passports;
+//            }
+//        }
+//        return null;
+//    }
 
 
 }
