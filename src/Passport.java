@@ -3,13 +3,13 @@ import java.util.Objects;
 import java.util.Set;
 
 public class Passport {
-    private Set<String> passportNumbers;
+    private String passportNumbers;
     private String surName;
     private String name;
     private String lastName;
     private String dateOfBirth;
 
-    public Passport(Set<String> passportNumbers, String surName, String name, String lastName, String dateOfBirth) {
+    public Passport(String passportNumbers, String surName, String name, String lastName, String dateOfBirth) {
         this.passportNumbers = passportNumbers;
         this.surName = surName;
         this.name = name;
@@ -22,10 +22,9 @@ public class Passport {
         if (dateOfBirth == null || dateOfBirth.isEmpty() || dateOfBirth.isBlank())
             throw new IllegalArgumentException("Некорректно заполнена Дата рождения");
 
-
     }
 
-    public Set<String> getPassportNumbers() {
+    public String getPassportNumbers() {
         return passportNumbers;
     }
 
@@ -48,14 +47,6 @@ public class Passport {
     public boolean isSetNumber(String s) {
         return passportNumbers.contains(s);
     }
-
-    public String print(String s) {
-        for (String passport1:passportNumbers) {
-            return passport1;
-        }
-        return null;
-    }
-
 
     @Override
     public String toString() {
